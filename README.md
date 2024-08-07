@@ -3,10 +3,11 @@ Code used for my project in the CASSUM summer program, focusing on automating th
 of radio astrononmical spectra for molecular indentification and characterization.
 
 [Program information](https://cosmicorigins.space/cassum-vico24)
+
 [Final presentation](https://drive.google.com/file/d/1K9DS--Lo1gwMuQSdogHVzZdRzedzqb2x/view)
 
-Data from the SPARKS observing program (Search for high-mass protostars with ALMA revealed up 
-to kiloparsec scales) was used, from which the individual data files are not yet publicly available.
+This project used data from the SPARKS observing program (Search for high-mass protostars with ALMA revealed up 
+to kiloparsec scales), from which the individual data files are not yet publicly available.
 
 ### File Structure:
 1. `Jybeam_to_Kelvin.py`
