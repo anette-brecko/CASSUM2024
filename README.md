@@ -27,7 +27,7 @@ the Splatalogue database for astronomical spectroscopy for particular molecules
 to see which transitions of a given molecule fall within this frequency range. Saves
 the resulting frequencies, Einstein coefficients, and upper state energy to a .dat file.
 5. `PCA_test.py`<br />
-Uses a small number of sythentic spectra generated via LTE fitting particular molecule
+Uses a small number of sythentic spectra generated via LTE fitting of a particular molecule,
 and the PCA package in scikit-learn in order to make a reconstructed approximation of
 the observed data. The accuracy of this reconstruction allows us to determine whether or
 not a transition for that particular molecule is detected within the observed spectra.
