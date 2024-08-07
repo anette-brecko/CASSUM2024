@@ -17,12 +17,17 @@ files and converted the intensities to units of Kelvin.
 Reads in provided information about the sources through source_info_converted.txt, which includes
 RMS, rest velocity of the sources, size of the radio telescope beam, etc. and finds spectral peaks
 in the data above a particular threshold (i.e. 3σ, 5σ). Plots peaks in all four spectral
-windows and displays these results using matplotlib
+windows and displays these results using matplotlib.
 3. `find_all_peaks.py`<br />
 Finds molecular transition peaks in all of the ~200 source files, and saves the frequencies and
-intensities of the peaks to output .csv files.
+intensities of the peaks in each source as a .csv file.
 4. `transition_find.py`<br />
-Finds minimum and maximum frequencies of all spectral windows across all sources, and queries
-the Splatalogue database for astronomical spectroscopy to find for particular molecules
+Finds the overall minimum and maximum frequencies across all sources, and queries
+the Splatalogue database for astronomical spectroscopy for particular molecules
 to see which transitions of a given molecule fall within this frequency range. Saves
 the resulting frequencies, Einstein coefficients, and upper state energy to a .dat file.
+5. `PCA_test.py`<br />
+Uses a small number of sythentic spectra generated via LTE fitting particular molecule
+and the PCA package in scikit-learn in order to make a reconstructed approximation of
+the observed data. The accuracy of this reconstruction allows us to determine whether or
+not a transition for that particular molecule is detected within the observed spectra.
