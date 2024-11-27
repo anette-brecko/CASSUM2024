@@ -15,7 +15,7 @@ from scipy.signal import find_peaks
 ##############
 ### STEP 1 ###
 ##############
-# Load all synthetic spectra (= training set) and pre-process them
+# Load all synthetic spectra (training set) and pre-process them
 # All spectra need to have same length (i.e. same frequency grid)
 # All spectra need to be re-aligned to account for frequency/velocity shift
 
@@ -95,9 +95,6 @@ plt.grid(True)
 plt.tight_layout()
 plt.show()
 
-# Here it shows that (as you know already) there can be velocity/frequency offsets between the synthetic spectra
-# Therefore, you will need to re-align the synthetic spectra within this step one
-
 
 
 
@@ -106,7 +103,7 @@ plt.show()
 ##############
 # Apply PCA to the training set
 
-n_components = 5  # Number of principal components to keep, this can be edited, try different values
+n_components = 5  # Number of principal components to keep, can try different values
 pca = PCA(n_components=n_components)
 pca.fit(spectra)
 
@@ -124,14 +121,12 @@ plt.figure(figsize=(8, 6))
 plt.plot(np.cumsum(pca.explained_variance_ratio_), marker='o')
 plt.xlabel('Number of Components')
 plt.ylabel('Cumulative Explained Variance') #cumulative proportion of total variance explained by the components up to that point
-plt.title('Explained Variance by PCA Components') #also called "Scree Plot"
+plt.title('Explained Variance by PCA Components') #also called Scree Plot
 plt.grid()
 plt.show()
 
 # The scree plot helps decide how many principal components to retain for dimensionality reduction while preserving most of the variance.
-# e.g. if 95% of the variance is explained by the first 3 components, you might choose to use just those 3 components instead of the entire original set of variables, i.e. reducing the dimensionality of the data from the original number of features to just three components.
 # Retaining too many components can lead to overfitting
-
 
 
 ##############
@@ -144,7 +139,7 @@ plt.show()
 source = '351.1542+0.7073-MM23_' + SPW
 group = str(source_info.loc[source_info.iloc[:, 0] == source, 'group number'].values[0])
 
-#Getting the 
+#Source directory for file (change if running from different machine)
 path_obs = "/Users/elsabrecko/Desktop/CASSUM/SPARKS_Spectra/GROUP" + group + "_K/" + source + "_K.dat"
 new_spectrum_data = pd.read_csv(path_obs)
 frequency_obs = list(new_spectrum_data.iloc[:, 0])
@@ -191,7 +186,7 @@ plt.show()
 non_zero_indices = reconstructed_spectrum.flatten() != 0
 
 # Define a threshold for line detection
-threshold = 0.9 # Edit threshold to decide which percentage of the line intensity you want 
+threshold = 0.9 # Edit threshold values 
 
 # Compute difference between observed spectrum and reconstructed spectrum, only for channels where reconstructed spectrum is != 0
 detected_lines = np.abs(intensity_obs[non_zero_indices] / reconstructed_spectrum.flatten()[non_zero_indices]) > threshold
